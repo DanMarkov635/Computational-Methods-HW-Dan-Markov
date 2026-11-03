@@ -26,8 +26,6 @@ x_vals = np.append(x_vals,x)
 y_vals = np.append(y_vals, y)
 t_vals = np.append(t_vals,time)
 
-
-
 while (x < distance) and (x >= 0.0):
 
   free_path = -mfp * np.log(rng.random())
@@ -42,7 +40,6 @@ while (x < distance) and (x >= 0.0):
   x_vals = np.append(x_vals,x)
   y_vals = np.append(y_vals,y)
   t_vals = np.append(t_vals,time)
-
 
 if (x_vals[-1] > 1000):
   extra_dist_x = x_vals[-1] - 1000.0
@@ -63,14 +60,9 @@ elif (x_vals[-1] < 0):
   y_vals[-1] = y_vals[-1] - extra_dist_y
 
 
-  
-  
-
-
 
 fig = plt.figure(figsize=(5,5))
 ax = plt.axes(xlim=(-100, 1100), ylim=(min(y_vals)-100, max(y_vals)+100))
-
 
 photon=plt.Circle((0,0),radius=10,facecolor='black')
 ax.add_patch(photon)
@@ -108,16 +100,7 @@ def animate(j):
 
   return photon, path_line
 
-
-
-ani = animation.FuncAnimation(
-    fig,
-    animate,
-    init_func=init,
-    frames=frames,
-    interval=20,
-    blit=False
-)
+ani = animation.FuncAnimation(fig, animate, init_func=init, frames=frames, interval=20, blit=False)
 
 if x_vals[-1] <= 1.0:
   print("The photon was reflected backwards out of the slab in", t_vals[-1], "seconds")
